@@ -9,7 +9,6 @@ import json
 import os
 
 CONFIG_FILE = "info_channels.json"
-OWNER_IDS = [1380183114109947924]  # Add your owner ID(s) here
 
 
 async def fetch_image(url, session=None):
@@ -98,9 +97,7 @@ class InfoCommands(commands.Cog):
 
     @commands.hybrid_command(name="info", description="Displays EM OFFICIAL player info")
     async def player_info(self, ctx: commands.Context, uid: str):
-        if ctx.author.id not in OWNER_IDS:
-            return await ctx.send("❌ You are not allowed to use this command.", ephemeral=True)
-
+    
         if not await self.is_channel_allowed(ctx):
             return await ctx.send("❌ This command is not allowed in this channel.", ephemeral=True)
 
